@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-    .connect('mongodb://mongo:27018/vatchit', { useNewUrlParser: true })
+    .connect('mongodb://vatchit_mongo:27018/vatchit', { useNewUrlParser: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })
