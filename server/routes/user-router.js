@@ -11,5 +11,5 @@ router.get('/user/:id', UserCtrl.getUserById)
 router.get('/users', UserCtrl.getUsers)
 router.post('/login', UserCtrl.loginUsers)
 router.post('/validateUser',UserCtrl.checkUserEmailOrPhone)
-
+router.get('/countries', UserCtrl.countryData)
 module.exports = router

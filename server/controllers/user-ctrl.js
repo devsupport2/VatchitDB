@@ -1,6 +1,9 @@
 const User = require('../models/user-model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
+const Country = require('../countries.json');
+
 const app_secret ="x/A?D(G+KbPeShVmYq3t6w9z$B&E)H@M";
 
 const saltRounds = 10;
@@ -126,6 +129,7 @@ updateUser = async (req, res) => {
                         body.password = hash;
 
                         user.name = body.name
+                        user.country = body.country
                         user.email = body.email
                         user.phone = body.phone
                         user.password = body.password
@@ -244,6 +248,17 @@ checkUserEmailOrPhone = async (req, res) => {
 
 }
 
+countryData = async (req, res) => {
+    if(Country){
+        return res.status(200).json({ success: true, countries: Country })
+    }
+    else
+    {
+        return res.status(400).json({ success: false, message: "Something Went wrong while fetching country" })
+    }
+    
+}
+
 module.exports = {
     createUser,
     updateUser,
@@ -252,4 +267,5 @@ module.exports = {
     getUserById,
     loginUsers,
     checkUserEmailOrPhone,
+    countryData
 }
